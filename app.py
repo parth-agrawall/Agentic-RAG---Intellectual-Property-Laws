@@ -263,4 +263,7 @@ if not os.path.exists("templates"):
 
 # Start the server if run as a script
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    import os
+    # Get port from environment variable or default to 8000
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=True)
